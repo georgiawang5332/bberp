@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="content-wrapper" style="min-height: 36px;">
+
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>肉品訂購單</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            {#                            <li class="breadcrumb-item"><a href="#">Home</a></li>#}
+                            <li class="breadcrumb-item"><a href="#">Layout</a></li>
+                            <li class="breadcrumb-item active">肉品訂購單</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+
+                        {#                        <form method='POST' role="form" action="{% url 'meatOrder:listOrder' %}">#}
+                        {#                            {% csrf_token %}#}
+
+
+                        <div class="card card-Light ">
+                            <div class="card-header">
+                                <h3 class="card-title"><font style="vertical-align: inherit;"><font
+                                        style="vertical-align: inherit;">訂單查詢</font></font></h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                            title="Collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"
+                                            title="Remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            {#                            <form method='POST' role="form">#}
+                            {#                                {% csrf_token %}#}
+
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-6 input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">訂單編號</font></font></span>
+                                        </div>
+                                        <input class="form-control"
+                                               type="search" name="order_number"
+                                               value="{{ request.GET.order_number }}"
+                                               placeholder="ex: 1001~1014">
+                                        {#                                        <input class="form-control py-2 border-right-0 border" type="search" name="title_contains" placeholder="Title contains..." />#}
+
+                                    </div>
+                                    <div class="col-6 input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">商品名稱</font></font></span>
+                                        </div>
+                                        <input type="text" class="form-control" type="search"
+                                               name="product_name"
+                                               value="{{ request.GET.product_name }}"
+                                               placeholder="ex: 牛腱">
+                                    </div>
+                                    <div class="col-6 input-group mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              數量
+                                            </span>
+                                            </div>
+                                            <input type="text" class="form-control" type="search"
+                                                   name="quantity"
+                                                   value="{{ request.GET.quantity }}"
+                                                   placeholder="ex:  3">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">斤(整數)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 input-group mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              單價
+                                            </span>
+                                            </div>
+                                            <input type="text" class="form-control" type="search"
+                                                   name="unit_price"
+                                                   value="{{ request.GET.unit_price }}"
+                                                   placeholder="一斤 100 " disabled>
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">元 (台幣)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">供應廠商名稱</font></font></span>
+                                        </div>
+                                        <input type="text" class="form-control" type="search"
+                                               name="supplier_name"
+                                               value="{{ request.GET.supplier_name }}"
+                                               placeholder="ex: 山牛肉公司">
+                                    </div>
+                                    <div class="col-6 input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">採購人員</font></font></span>
+                                        </div>
+                                        <input type="text" class="form-control" type="search"
+                                               name="procurement_staff"
+                                               value="{{ request.GET.procurement_staff }}"
+                                               placeholder="ex: 王曉明">
+                                    </div>
+                                    {#                                        <div class="col-6 input-group mb-3">#}
+                                    {#                                            <div class="input-group-prepend">#}
+                                    {#                                            <span class="input-group-text"><font style="vertical-align: inherit;"><font#}
+                                    {#                                                    style="vertical-align: inherit;">建立日期</font></font></span>#}
+                                    {#                                            </div>#}
+                                    {#                                            <input type="text" class="form-control" type="search" name="add_date"#}
+                                    {#                                                   placeholder="ex: 2022/01/22">#}
+                                    {#                                        </div>#}
+                                    {#                                        <div class="col-6 input-group mb-3">#}
+                                    {#                                            <div class="input-group-prepend">#}
+                                    {#                                            <span class="input-group-text"><font style="vertical-align: inherit;"><font#}
+                                    {#                                                    style="vertical-align: inherit;">修改日期</font></font></span>#}
+                                    {#                                            </div>#}
+                                    {#                                            <input type="text" class="form-control" type="search" name="mod_date"#}
+                                    {#                                                   placeholder="ex: 2022/01/22">#}
+                                    {#                                        </div>#}
+                                    <div class="col-12 input-group p-2">
+                                        <button type="submit" class="btn btn-info"><i class="fas fa-search"></i>&nbsp;&nbsp;查詢訂單
+                                        </button>
+                                    </div>
+
+                                    {#                                    <div class="col-3">#}
+                                    {#                                        <input type="text" class="form-control" placeholder=".col-3">#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="col-4">#}
+                                    {#                                        <input type="text" class="form-control" placeholder=".col-4">#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="col-6">#}
+                                    {#                                        <input type="text" class="form-control" placeholder=".col-5">#}
+                                    {#                                    </div>#}
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                            {#                            </form>#}
+                        </div>
+                        {#                        table #}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">具有默認功能的數據表</h3>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="row pb-2">
+                                    <div class="col-sm-12 col-md-6">
+                                        {#                                        <div class="col-md-4 text-right">#}
+                                        {#                                        </div>#}
+                                        <div class="dt-buttons btn-group flex-wrap">
+                                            <button id="exporttable"
+                                                    class="btn btn-secondary buttons-copy buttons-html5">Export xls
+                                            </button>
+                                            <button class="btn btn-secondary buttons-copy buttons-html5"
+                                                    tabindex="0"
+                                                    aria-controls="example1" type="button"><span>Copy</span>
+                                            </button>
+                                            <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0"
+                                                    aria-controls="example1" type="button"><span>CSV</span></button>
+                                            <button class="btn btn-secondary buttons-excel buttons-html5"
+                                                    tabindex="0"
+                                                    aria-controls="example1" type="button"><span>Excel</span>
+                                            </button>
+                                            <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0"
+                                                    aria-controls="example1" type="button"><span>PDF</span></button>
+                                            <button class="btn btn-secondary buttons-print" tabindex="0"
+                                                    aria-controls="example1" type="button"><span>Print</span>
+                                            </button>
+                                            {#                                            <div class="btn-group">#}
+                                            {#                                                <button class="btn btn-secondary buttons-collection dropdown-toggle buttons-colvis"#}
+                                            {#                                                        tabindex="0" aria-controls="example1" type="button"#}
+                                            {#                                                        aria-haspopup="true" aria-expanded="true"><span>Column visibility</span>#}
+                                            {#                                                </button>#}
+                                            {#                                                <div class="dt-button-background" style=""></div>#}
+                                            {#                                                <div class="dt-button-collection" style="top: 38px; left: 0px;">#}
+                                            {#                                                    <div class="dropdown-menu" role="menu"><a#}
+                                            {#                                                            class="dt-button dropdown-item buttons-columnVisibility active"#}
+                                            {#                                                            tabindex="0" aria-controls="example1" href="#"#}
+                                            {#                                                            data-cv-idx="0"><span>Rendering engine</span></a> <a#}
+                                            {#                                                            class="dt-button dropdown-item buttons-columnVisibility active"#}
+                                            {#                                                            tabindex="0" aria-controls="example1" href="#"#}
+                                            {#                                                            data-cv-idx="1"><span>Browser</span></a> <a#}
+                                            {#                                                            class="dt-button dropdown-item buttons-columnVisibility active"#}
+                                            {#                                                            tabindex="0" aria-controls="example1" href="#"#}
+                                            {#                                                            data-cv-idx="2"><span>Platform(s)</span></a> <a#}
+                                            {#                                                            class="dt-button dropdown-item buttons-columnVisibility active"#}
+                                            {#                                                            tabindex="0" aria-controls="example1" href="#"#}
+                                            {#                                                            data-cv-idx="3"><span>Engine version</span></a> <a#}
+                                            {#                                                            class="dt-button dropdown-item buttons-columnVisibility active"#}
+                                            {#                                                            tabindex="0" aria-controls="example1" href="#"#}
+                                            {#                                                            data-cv-idx="4"><span>CSS grade</span></a></div>#}
+                                            {#                                                </div>#}
+                                            {#                                            </div>#}
+                                        </div>
+                                    </div>
+                                    {#                                           <form method='GET' role="form" action="{% url 'meatOrder:listOrder' %}">#}
+                                    {#                            {% csrf_token %}#}
+
+                                    <div class="col-sm-12 col-md-6">
+                                        <form method='GET' role="form" action="{% url 'meatOrder:listOrder' %}">
+                                            {% csrf_token %}
+                                            <div id="example1_filter" class="dataTables_filter"
+                                                 style="text-align: right;">
+                                                <label>查詢訂單:<input type="search"
+                                                                   class="form-control form-control-sm"
+                                                                   name="q"
+                                                                   aria-label="Search"
+                                                                   placeholder="Search"
+                                                                   aria-controls="example1"
+                                                                   style="margin-left: 0.5em;display: inline-block;width: auto;">
+                                                </label>
+                                                <button class="btn btn-outline-success my-2 my-sm-0"
+                                                        type="submit">送出
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    {#                                           </form>#}
+                                </div>
+                                {#                                <div class="bd-example">#}
+                                <div class="table-responsive">
+                                    <table id="" class="table noExl">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 60px">項號</th>
+                                            <th style="width: 100px" scope="col">訂單編號</th>
+                                            <th style="width: 100px" scope="col">肉品名稱</th>
+                                            <th style="width: 60px" scope="col">數量</th>
+                                            <th scope="col">供應廠商名稱</th>
+                                            <th scope="col">採購人員</th>
+                                            <th scope="col">建立日期</th>
+                                            <th scope="col">修改日期</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for meatorders in data %}
+
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td>{{ meatorders.order_number }}</td>
+                                                <td>{{ meatorders.product_name }}</td>
+                                                <td>{{ meatorders.quantity }}</td>
+                                                <td>{{ meatorders.supplier_name }}</td>
+                                                <td>{{ meatorders.procurement_staff }}</td>
+                                                <td>{{ meatorders.add_date }}</td>
+                                                <td>{{ meatorders.mod_date }}</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                {#                                </div>#}
+                            </div>
+                        </div>
+
+
+                        {#                        table database #}
+
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Title</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                            title="Collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"
+                                            title="Remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                Start creating your amazing application!
+                            </div>
+
+                            <div class="card-footer">
+                                Footer
+                            </div>
+
+                        </div>
+
+
+                        {#                        </form>#}
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+{% endblock %}

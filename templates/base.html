@@ -1,0 +1,57 @@
+<html lang="en" style="height: auto;">
+{% load static %}
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | BBox 牛肉</title>
+
+    {% include '_includes/links.html' %}
+    {% include '_includes/scriptHead.html' %}
+
+
+</head>
+<style>
+    /* Styles go here */
+
+/* Column Filter row at top of table  */
+{#.datatable tfoot {#}
+{#  display: table-header-group;#}
+{# }#}
+{##}
+{#.datatable tfoot .filter-column {#}
+{#  width: 100% !important;#}
+{# }#}
+</style>
+
+<body class="sidebar-mini layout-fixed  layout-navbar-fixed" style="height: auto;">
+<div class="wrapper">
+
+    {% block navbar %}
+        {% include '_includes/navbar.html' %}
+    {% endblock %}
+
+    {% block sidebar %}
+        {% include '_includes/sidebar.html' %}
+    {% endblock %}
+
+    {% block content %}
+{#        {% include '_includes/content.html' %}#}
+    {% endblock %}
+
+    {% block footer %}
+        {% include '_includes/footer.html' %}
+    {% endblock %}
+
+    {% block aside %}
+        {% include '_includes/aside.html' %}
+    {% endblock %}
+
+    <div id="sidebar-overlay"></div>
+</div>
+
+{% include '_includes/scripts.html' %}
+
+
+</body>
+</html>

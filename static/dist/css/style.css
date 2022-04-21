@@ -1,0 +1,29 @@
+*, ::after, ::before {
+    /*outline: red 1px solid;*/
+    box-sizing: border-box;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: right;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    justify-content: flex-end;
+}
+
+/*肉品訂單 - table: 固定td寬度令其不隨內容改變以及固定tr的高度*/
+table {
+    table-layout: fixed;
+    word-break: break-all;
+    text-align: center;
+}
+
+th {
+    width: 180px;
+}
