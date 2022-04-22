@@ -224,7 +224,8 @@
                                             {% csrf_token %}
                                             <div id="example1_filter" class="dataTables_filter"
                                                  style="text-align: right;">
-                                                <label>查詢訂單:<input type="search"
+                                                <label>查詢訂單:<input type="text"
+                                                                   value="{{ request.GET.q }}"
                                                                    class="form-control form-control-sm"
                                                                    name="q"
                                                                    aria-label="Search"
@@ -247,9 +248,9 @@
                                         <tr>
                                             <th style="width: 60px">項號</th>
                                             <th style="width: 100px" scope="col">訂單編號</th>
-                                            <th style="width: 100px" scope="col">肉品名稱</th>
+{#                                            <th style="width: 100px" scope="col">肉品名稱</th>#}
                                             <th style="width: 60px" scope="col">數量</th>
-                                            <th scope="col">供應廠商名稱</th>
+{#                                            <th scope="col">供應廠商名稱</th>#}
                                             <th scope="col">採購人員</th>
                                             <th scope="col">建立日期</th>
                                             <th scope="col">修改日期</th>
@@ -259,11 +260,11 @@
                                         {% for meatorders in data %}
 
                                             <tr>
-                                                <th scope="row"></th>
+                                                <th scope="row">{{ meatorders.no }}</th>
                                                 <td>{{ meatorders.order_number }}</td>
-                                                <td>{{ meatorders.product_name }}</td>
+{#                                                <td>{{ meatorders.product_name }}</td>#}
                                                 <td>{{ meatorders.quantity }}</td>
-                                                <td>{{ meatorders.supplier_name }}</td>
+{#                                                <td>{{ meatorders.supplier_name }}</td>#}
                                                 <td>{{ meatorders.procurement_staff }}</td>
                                                 <td>{{ meatorders.add_date }}</td>
                                                 <td>{{ meatorders.mod_date }}</td>

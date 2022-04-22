@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'bberp.wsgi.application'
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'bigbox',
+    'NAME': 'bigbeef',
     'USER': 'postgres',
     'PASSWORD': 'postgres5',
     'HOST': 'localhost',
