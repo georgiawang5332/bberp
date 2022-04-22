@@ -37,7 +37,7 @@ class MeatOrderAdmin(admin.ModelAdmin):
               'procurement_staff')
 
     list_filter = ('product_name',)
-    search_fields = ('product_name',)
+    search_fields = ('product_name__meatName',)
     ordering = ('-unit_price',)
     # form = MultSearchForm
 
